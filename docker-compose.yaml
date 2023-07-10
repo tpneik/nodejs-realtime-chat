@@ -1,0 +1,23 @@
+version: "3.4"
+services:
+  backend:
+    image: tpneik/nodejs-backend
+    #entrypoint: /bin/sh
+    ports:
+      - 3001:3001
+    networks:
+      - mynets
+    
+  frontend:
+    image: tpneik/nodejs-frontend
+    #entrypoint: /bin/sh
+    ports:
+      - 5173:5173
+    depends_on:
+      - backend
+    networks:
+      - mynets
+
+networks:
+  mynets:
+    driver: bridge
